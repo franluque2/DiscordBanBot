@@ -35,7 +35,7 @@ async def on_ready():
     await bot.tree.sync()
     
     # Set custom status
-    activity = discord.Activity(type=discord.ActivityType.custom, name="Banishing 3 cards.")
+    activity = discord.Activity(type=discord.ActivityType.playing, name="and Banishing 3 cards.")
     await bot.change_presence(activity=activity, status=discord.Status.online)
     
     print(f'Logged in as {bot.user.name} (ID: {bot.user.id})')
