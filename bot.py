@@ -26,13 +26,18 @@ def save_watched_channels(channels):
 intents = discord.Intents.default()
 intents.message_content = True
 intents.members = True
-bot = commands.Bot(command_prefix='!', intents=intents)
+bot = commands.Bot(command_prefix=None, intents=intents)
 
 watched_channels = load_watched_channels()
 
 @bot.event
 async def on_ready():
     await bot.tree.sync()
+    
+    # Set custom status
+    activity = discord.Activity(type=discord.ActivityType.custom, name="Banishing 3 cards.")
+    await bot.change_presence(activity=activity, status=discord.Status.online)
+    
     print(f'Logged in as {bot.user.name} (ID: {bot.user.id})')
     print(f'Monitoring {len(watched_channels)} channels')
 
